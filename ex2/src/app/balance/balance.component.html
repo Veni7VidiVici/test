@@ -1,0 +1,42 @@
+<div class="balance-content">
+  <h1 class="balance-title">
+    Пополнить баланс {{operator?.name}} #{{operator.id}}
+  </h1>
+  <form class="form-balance"
+    (ngSubmit)="submitForm(formBalance)"
+    [formGroup]="formBalance" novalidate>
+
+    <input class="input-balance"
+           formControlName="phone"
+           type="text"
+           placeholder="phone"
+           [textMask]="{
+            mask: phoneMask,
+            showMask: true
+           }">
+
+    <input class="input-balance"
+           formControlName="price"
+           type="text" placeholder="price">
+
+    <div class="balance-message text-center">
+      <span [hidden]="!sending">
+        Пожалуйста подождите...
+      </span>
+      <span *ngIf="success;else err" class="color-green">
+        {{success}}
+      </span>
+      <ng-template #err>
+        <span class="color-red">{{error}}</span>
+      </ng-template>
+    </div>
+
+    <input [disabled]="formBalance.invalid || sending"
+           type="submit" value="Пополнить">
+
+  </form>
+  <div class="balance-content-footer text-center">
+    <a routerLink="/app">Отмена</a>
+  </div>
+</div>
+

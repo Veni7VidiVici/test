@@ -1,0 +1,12 @@
+<div *ngIf="operators;else load" class="operators-content">
+  <a *ngFor="let operator of operators"
+     [routerLink]="['/balance', operator.id]"
+     class="operators-link">
+    {{operator.name}}
+  </a>
+</div>
+<ng-template #load>
+  <div class="text-center">
+    Загрузка...
+  </div>
+</ng-template>
