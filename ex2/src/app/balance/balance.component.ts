@@ -46,7 +46,7 @@ export class BalanceComponent implements OnInit {
   createForm() {
     this.formBalance = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern(/^(\+7\(\d{3}\) \d{3}-\d{4})$/)]],
-      price: ['999', [Validators.required,Validators.pattern(/^([1-9][0-9]{0,2}|1000)$/)]]
+      price: ['', [Validators.required,Validators.pattern(/^([1-9][0-9]{0,2}|1000)$/)]]
     })
   }
 
